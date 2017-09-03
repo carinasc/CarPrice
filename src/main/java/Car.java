@@ -1,3 +1,6 @@
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Created by nephrite on 02.09.17.
  */
@@ -5,14 +8,17 @@ public class Car {
     private String name;
     private int price;
     private String manager;
-    private int identifier;
+    private int id;
     private Carcase carcase;
 
-    public Car(String name, int price, String manager, int identifier, Carcase carcase) {
+    //перед конструктором
+    @JsonCreator
+    public Car(@JsonProperty("name")String name, @JsonProperty("price")int price, @JsonProperty("manager")String manager,
+               @JsonProperty("id") int id, @JsonProperty("carcase")Carcase carcase) {
         this.name = name;
         this.price = price;
         this.manager = manager;
-        this.identifier = identifier;
+        this.id = id;
         this.carcase = carcase;
     }
 
@@ -40,12 +46,12 @@ public class Car {
         this.manager = manager;
     }
 
-    public int getIdentifier() {
-        return identifier;
+    public int getId() {
+        return id;
     }
 
-    public void setIdentifier(int identifier) {
-        this.identifier = identifier;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Carcase getCarcase() {
